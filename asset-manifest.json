@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/lazap/static/css/main.073c9b0a.css",
-    "main.js": "/lazap/static/js/main.77a156a9.js",
+    "main.css": "/lazap/static/css/main.5f2de3e1.css",
+    "main.js": "/lazap/static/js/main.8f6af2f1.js",
     "static/js/787.68f1ac06.chunk.js": "/lazap/static/js/787.68f1ac06.chunk.js",
     "index.html": "/lazap/index.html",
-    "main.073c9b0a.css.map": "/lazap/static/css/main.073c9b0a.css.map",
-    "main.77a156a9.js.map": "/lazap/static/js/main.77a156a9.js.map",
+    "main.5f2de3e1.css.map": "/lazap/static/css/main.5f2de3e1.css.map",
+    "main.8f6af2f1.js.map": "/lazap/static/js/main.8f6af2f1.js.map",
     "787.68f1ac06.chunk.js.map": "/lazap/static/js/787.68f1ac06.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.77a156a9.js"
+    "static/css/main.5f2de3e1.css",
+    "static/js/main.8f6af2f1.js"
   ]
 }
