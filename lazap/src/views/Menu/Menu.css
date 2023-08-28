@@ -1,0 +1,15 @@
+.card{
+    width: 450px;
+
+}
+.cardImg{
+    width: 350px;
+    height: auto;
+
+}
+
+.cardFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

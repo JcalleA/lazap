@@ -1,48 +1,24 @@
-import React, { useState } from "react";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { app } from "../context/firebase/firebase";
+import React from "react";
+import { UserAuth} from '../../context/firebase/AuthContext/AuthContext'
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [user, setUser] = useState();
 
-  const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+  const clienid="2s52ej34384isqp62kd20fmgd2:r8evla2ukqbqieujm2rijo7vvmn6cdr696vgt4kelhidc3a15l3"
+  const clientidCod = btoa(clienid)
 
-  const googleLogin = async () => {
-    await signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        setUser(result.user);
-        // IdP data available using getAdditionalUserInfo(result)
-        console.log("====================================");
-        console.log(user);
-        console.log("====================================");
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
-  };
+  const navigate = useNavigate()
 
-  console.log("====================================");
-        console.log(user);
-        console.log("====================================");
+  const {user,googleLogin,logOut} = UserAuth();
+  
 
   return user ? (
     <div>
       <div>Bienbenido restaurante </div>
       <h1>{user.displayName}</h1>
       <img src={user.photoURL}></img>
+      <button onClick={()=>{logOut()}}>Logout</button>
+      <button onClick={()=>{navigate('/menu')}}>Menu</button>
     </div>
   ) : (
     <div>
@@ -60,6 +36,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 // UserImpl {providerId: 'firebase', proactiveRefresh: ProactiveRefresh, reloadUserInfo: {…}, reloadListener: null, uid: 'uDEoVtC4vwgC5p0PvL347zVaQ6k1', …}
