@@ -7,11 +7,11 @@ const Pedidos = () => {
     <div>
       <h1>Lista De Pedidos</h1>
       <table>
-        <tr>
+        <thead>
                 <td>cliente</td>
                 <td>plato</td>
                 <td>precio</td>
-              </tr>
+              </thead>
       {pedido.map((e)=>{
         return(
               <tr>
