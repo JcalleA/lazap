@@ -6,9 +6,6 @@ export const setPedido=(plato,precio,cliente)=>{
         plato:plato,
         precio:precio
     })
-    console.log('====================================');
-    console.log(pedido);
-    console.log('====================================');
     
 }
 
