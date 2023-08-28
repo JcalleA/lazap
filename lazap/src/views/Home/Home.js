@@ -14,7 +14,7 @@ const Home = () => {
 
   return user ? (
     <div>
-      <div>Bienbenido restaurante </div>
+      <div>Bienvenido restaurante </div>
       <h1>{user.displayName}</h1>
       <img src={user.photoURL}></img>
       <button onClick={()=>{logOut()}}>Logout</button>
