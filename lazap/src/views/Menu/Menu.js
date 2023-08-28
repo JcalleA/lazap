@@ -38,19 +38,12 @@ const Menu = () => {
             <img className="cardImg" src={e.img}></img>
             <div className="cardFooter">
               <h2>{e.precio}</h2>
-              <button onClick={()=>{pedir(platillos.nombre,platillos.precio,user.displayName)}}>Pedir</button>
+              <button onClick={()=>{pedir(e.nombre,e.precio,user.displayName)}}>Pedir</button>
             </div>
             </div>
           )
         })}
-        <h1>{platillos.nombre}</h1>
-        <img className="cardImg" src={platillos.img} alt="" />
-        <div >
-          <h2>{platillos.precio}</h2>
-          <button ></button>
-        </div>
       </div>
-    
   );
 };
 
