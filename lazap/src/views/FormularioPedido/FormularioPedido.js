@@ -7,7 +7,8 @@ const FormularioPedido = () => {
   const navigate = useNavigate();
   const [token, setToken] =useState('');
   const [transaccion, setTransaccion] = useState('');
-  const [estado,setEstado] = useState('Esperando Pago')
+  const [estado,setEstado] = useState('Esperando Pago');
+  const [mensaj,setMensaj]=useState('');
 
   const [telefono, setTelefono] = useState({
     tel: "",
@@ -75,18 +76,27 @@ const FormularioPedido = () => {
     };
      await axios.post(urlMensaje, dataMensaje, config)
      .then(response=>{
+      console.log(response)
       let status = response.data.ResponseMessage.ResponseBody.any.getStatusPaymentRS.status
+      if(status==null){
+        
+      }else{
       if(status == 33){
         setEstado('Pendiente')
+        setMensaj('Esperando q aceptes el pago')
       }else if(status == 34){
         setEstado('Cancelado o rechazado')
+        setMensaj('Pago cancelado')
       }else if(status == 35){
         setEstado('Realizado')
+        setMensaj('Pago realizado')
       }else if(status == 69){
         setEstado('Caducada')
+        setMensaj('Tiempo gotado')
       }else{
         setEstado('Fallida')
       }
+    }
       
       
       
@@ -94,6 +104,7 @@ const FormularioPedido = () => {
   };
 
   const nequiMensaje = async () => {
+    setMensaj('Enviando mensaje pago ')
     let fecha = new Date().toISOString();
     let valor = pedido[0].precio;
     let mensaje = Math.floor(Math.random()*(9999999999-1111111111+1)+1);
@@ -137,9 +148,9 @@ const FormularioPedido = () => {
     };
     await axios.post(urlMensaje, dataMensaje, config)
     .then(response=>{
+      console.log(response)
       setTransaccion(response.data.ResponseMessage.ResponseBody.any.unregisteredPaymentRS
         .transactionId)
-        getEstado()
     })
     .catch(error=>{
       console.log('====================================');
@@ -150,6 +161,7 @@ const FormularioPedido = () => {
   };
 
   const sendToken = async () => {
+    setMensaj('Solicitando token...')
     const urlToken =
       "https://oauth.sandbox.nequi.com/oauth2/token?grant_type=client_credentials";
     const config = {
@@ -162,8 +174,8 @@ const FormularioPedido = () => {
 
     await axios.post(urlToken, {}, config)
     .then(response=>{
+      console.log(response)
       setToken(response.data.access_token)
-      nequiMensaje();
     });
     
     
@@ -176,8 +188,16 @@ const FormularioPedido = () => {
       alert("Solo numeros telefonicos 10 caracteres");
     }
   };
+  useEffect(()=>{
+    getEstado()
+  },[estado])
+  useEffect(()=>{
+    getEstado()
+  },[transaccion])
+  useEffect(()=>{
+    nequiMensaje()
+  },[token])
   
-
   return (
     <div>
       <table>
@@ -204,6 +224,7 @@ const FormularioPedido = () => {
         onChange={actualizar}
       />
       <h1>{telefono.tel}</h1>
+      <h2>{mensaj}</h2>
       <button
         onClick={() => {
           pedir();
