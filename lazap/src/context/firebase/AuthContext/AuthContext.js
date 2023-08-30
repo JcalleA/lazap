@@ -19,7 +19,6 @@ export const AuthContextProvider = ({ children }) => {
   const googleLogin = async () => {
     await signInWithPopup(auth, provider)
       .then((result) => {
-       
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         setUser(result.user);

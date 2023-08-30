@@ -11,8 +11,8 @@ const Menu = () => {
   const navigate=useNavigate();
 
   const pedir=(plato,precio,cliente)=>{
-    setPedido(plato,precio,cliente);
-    navigate('/pedidos')
+    setPedido(plato,precio,cliente,'esperando pago');
+    navigate('/formulariopedido')
     
   }
 

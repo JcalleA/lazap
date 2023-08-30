@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 
-  const clienid="2s52ej34384isqp62kd20fmgd2:r8evla2ukqbqieujm2rijo7vvmn6cdr696vgt4kelhidc3a15l3"
-  const clientidCod = btoa(clienid)
+  
 
   const navigate = useNavigate()
 

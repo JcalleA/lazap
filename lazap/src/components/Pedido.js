@@ -1,10 +1,11 @@
 export let pedido=[]
 
-export const setPedido=(plato,precio,cliente)=>{
+export const setPedido=(plato,precio,cliente,estado)=>{
     pedido.push({
         cliente:cliente,
         plato:plato,
-        precio:precio
+        precio:precio,
+        estado:estado,
     })
     
 }
